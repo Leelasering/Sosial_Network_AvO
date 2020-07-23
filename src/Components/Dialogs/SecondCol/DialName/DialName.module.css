@@ -1,0 +1,32 @@
+
+.dial_name{
+    border-bottom: 1px solid #d8e0b8;
+    height: 55px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 100%;
+}
+.dial_name_p{
+    font-size: 16px;
+    color: #67825e;
+    font-weight: 700;
+}
+.dial_ava{
+    width: 40px;
+    height: 40px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 21px;
+    background: #eee;
+}
+.dial_ava_div{
+    position: absolute;
+    top: 7px;
+    right: 30px;
+}
+/*////////////////////////////////*/

@@ -1,0 +1,102 @@
+.dial_name_div{
+    height: 60px;
+    width: 238px;
+    position: relative;
+    cursor: pointer;
+}
+.dial_name_div:hover{
+   background: #f5f7eb;
+}
+.dial_ava{
+    width: 40px;
+    height: 40px;
+
+    border-radius: 25px;
+    background: #eee;
+}
+.dial_ava_div{
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+.dial_name{
+    position: absolute;
+    top: 13px;
+    left: 60px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #67825e;
+    margin: 0;
+    padding: 0;
+    line-height: 13px;
+    max-width: 130px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.dial_text{
+    position: absolute;
+    top: 35px;
+    left: 60px;
+    font-size: 12px;
+    color: #93997d;
+    margin: 0;
+    padding: 0;
+    line-height: 13px;
+    max-width: 130px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.dial_time{
+    position: absolute;
+    top: 11px;
+    right: 10px;
+    font-size: 11px;
+    color: #b3b393;
+    margin: 0;
+}
+.mess_c{
+    max-width: 32px;
+
+    height: 18px;
+    background: #ffb18e;
+    padding: 0 5.6px 0 5.6px;
+    border-radius: 10px;
+    color: #fff;
+    position: absolute;
+    right: 10px;
+    top: 32px;
+    margin: 0;
+
+    font-size: 12px;
+    font-weight: 700;
+    text-align: center;
+    line-height: 18px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+}
+.active .dial_name_div{
+    background: #87b27e;
+
+}
+.active .dial_time{
+    color: #fff;
+
+}
+.active .dial_text{
+    color: #fff;
+
+}
+.active .dial_name{
+   color: #fff;
+
+}
+.active .mess_c{
+    background: #fff;
+    color: #87b27e;
+}

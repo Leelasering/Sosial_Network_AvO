@@ -1,0 +1,7 @@
+
+.Ava_Desc{
+    width: 100%;
+    display:flex;
+    justify-content:flex-start;
+    flex-flow: row;
+}

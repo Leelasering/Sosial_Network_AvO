@@ -1,0 +1,22 @@
+.ava_div {
+    position: relative;
+    width: 210px;
+    height: 210px;
+    text-align: center;
+    overflow: hidden;
+ 
+    border-radius: 10px;
+    box-shadow: 0 0 3px -1px #67825e;
+}
+.ava_div img{
+ 
+    width: 100%;
+    height: auto;
+}
+.ava_big_div{
+    height:250px;
+    width: 250px;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+}

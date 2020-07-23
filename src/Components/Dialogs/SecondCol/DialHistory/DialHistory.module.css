@@ -1,0 +1,112 @@
+
+
+/*////////////////////////////////*/
+.dial_histori_div{
+
+    height: 650px;
+    width: 560px;
+    margin-left: 6px;
+    overflow-y: scroll;
+    box-sizing: border-box;
+
+
+}
+.dial_histori_div::-webkit-scrollbar {
+    width: 3px;
+    height: 5px;
+    background-color: #dcee97;
+}
+
+/* �������� ���������� */
+.dial_histori_div::-webkit-scrollbar-thumb {
+    background-color: #dcee97;
+    /*
+
+    box-shadow: inset 1px 1px 10px #f3faf7;
+ */
+}
+
+.dial_histori_div:hover::-webkit-scrollbar-thumb {
+    background-color: rgba(0,0,0,0.2)
+}
+
+.dial_histori_div::-webkit-scrollbar-thumb:active {
+    background-color:   rgba(0,0,0,0.2);
+}
+.mess_list{
+
+    width: 100%;
+
+    padding-top: 40px;
+    padding-bottom: 20px;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: flex-end;
+    min-height: 640px;
+}
+
+/*/////////////////////////////////////*/
+
+/*/////////////////////////////////////*/
+.single_mess{
+    width: 500px;
+    min-height: 55px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    margin-right: 10px;
+    position: relative;
+    display: flex;
+    flex-flow: row;
+
+}
+.mess_ava{
+    width: 41px;
+    height: 41px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 21px;
+    margin-right: 15px;
+    margin-left: 25px;
+    background: #eee;
+}
+.autor_name{
+    position: absolute;
+    font-size: 14px;
+    line-height: 22px;
+    font-weight: 700;
+    color: #37623e;
+    left: 85px;
+    top: 5px;
+    padding: 0;
+}
+.mess_time{
+    position: absolute;
+    font-size: 11px;
+    color: #bbb;
+    right: 10px;
+    top: 7px;
+    padding: 0;
+}
+.s_mess_text{
+
+    width: 350px;
+    min-height: 18px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 2px 5px 0 5px;
+    line-height: 20px;
+    text-align: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    box-sizing: border-box;
+    font-size: 14px;
+    color: #555;
+}

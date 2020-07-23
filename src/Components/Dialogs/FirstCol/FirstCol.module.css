@@ -1,0 +1,67 @@
+
+.first_col{
+    width: 240px;
+    height: 940px;
+    border-right: 2px solid #dcee97;
+    background: #fff;
+    border-radius: 18px 0 0 0 ;
+
+}
+.poisk_dial{
+    width: 218px;
+    height: 30px;
+    margin-left: 10px;
+    margin-top: 15px;
+    background: #f3f6e8;
+    border-radius: 15px;
+    line-height: 30px;
+    font-size: 14px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border: none;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+.poisk_dial:focus{
+    background: #fff;
+    border: 2px solid #ecf0dc;
+}
+.dial_list{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    position: relative;
+
+}
+.dial_scrol_div{
+    height: 885px;
+  width: 240px;
+    overflow-y: scroll;
+
+}
+.dial_scrol_div::-webkit-scrollbar {
+    width: 2px;
+    height: 5px;
+    background-color: #dcee97;
+}
+
+/* �������� ���������� */
+.dial_scrol_div::-webkit-scrollbar-thumb {
+    background-color: #dcee97;
+    /*
+
+    box-shadow: inset 1px 1px 10px #f3faf7;
+ */
+}
+
+.dial_scrol_div:hover::-webkit-scrollbar-thumb {
+    background-color: rgba(0,0,0,0.2)
+}
+
+.dial_scrol_div::-webkit-scrollbar-thumb:active {
+    background-color:    rgba(0,0,0,0.2);
+}
