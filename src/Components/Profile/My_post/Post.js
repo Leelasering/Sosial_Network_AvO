@@ -7,7 +7,7 @@ const Post = (props) => {
 
         <div className={c.Post_div}>
             <div className={c.post_avtor}>
-                <div className={c.ava}><img src=""/></div>
+                <div className={c.ava}><img src="/static/media/tree.c6f60dad.png"/></div>
                 <div>
                     <p className={c.name}> {props.name} </p>
                     <p className={c.date}> {props.date} </p>
