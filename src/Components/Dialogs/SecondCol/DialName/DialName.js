@@ -2,7 +2,7 @@ import React from 'react';
 import c from './DialName.module.css';
 
 
-const SecondCol = (props) => {
+const DialName = (props) => {
     return (
 
 
@@ -24,4 +24,4 @@ const SecondCol = (props) => {
 // $('html').css('overflow','hidden');
 
 
-export default SecondCol;
+export default DialName;

@@ -3,15 +3,18 @@ import c from './SecondCol.module.css';
 import DialHistory from "./DialHistory/DialHistory";
 import DialName from "./DialName/DialName";
 import SendMess from "./SendMess/SendMess";
+import SendMessContainer from "./SendMess/SendMessContainer";
+import DialHistoryContainer from "./DialHistory/DialHistoryContainer";
 
 
 const SecondCol = (props) => {
+
     return (
         <div className={c.second_col}>
             <div className={c.big_dial_div}>
                 <DialName />
-                <DialHistory />
-                <SendMess />
+                <DialHistoryContainer />
+                <SendMessContainer />
 
             </div>
         </div>

@@ -14,7 +14,7 @@
     padding: 10px;
 }
 
-    .nav div {
+    .nav_div div {
         background: #fff;
         width: 180px;
         height: 25px;
@@ -29,16 +29,16 @@
         align-items: center;
         cursor: pointer;
     }
-.nav a{
+.nav_div a{
     text-decoration: none;
     color: #67825e;
 }
 
-        .nav div:hover {
+        .nav_div div:hover {
             box-shadow: 0 0 3px #ffb18e;
 
         }
-.nav a.active div{
+.nav_div a.active div{
     border: 2px solid #ffe3d7;
    
 }

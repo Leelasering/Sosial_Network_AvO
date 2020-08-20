@@ -2,7 +2,7 @@ import React from 'react';
 import c from './DialHistory.module.css';
 
 
-const SecondCol = (props) => {
+const SingleMess = (props) => {
     return (
 
         <div className={c.single_mess}>
@@ -22,4 +22,4 @@ const SecondCol = (props) => {
 // $('html').css('overflow','hidden');
 
 
-export default SecondCol;
+export default SingleMess;
