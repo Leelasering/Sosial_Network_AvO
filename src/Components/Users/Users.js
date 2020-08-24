@@ -4,50 +4,54 @@ import User from "./User";
 import * as axios from "axios";
 
 
-const Users = (props) => {
-
-    if (props.users.length === 0)
+class Users extends React.Component {
+    constructor(props)
     {
-        axios.get("https://social-network.samuraijs.com/api/1.0/users")
-            .then(response=>{
-                props.setUsers(response.data.items)
-            });
+        super(props);
+        if (this.props.users.length === 0) {
+            axios.get("https://social-network.samuraijs.com/api/1.0/users")
+                .then(response => {
+                        this.props.setUsers(response.data.items)
+                });
+        }
+
     }
 
-    let users = props.users;
-    let arr = users
-        .map(user => <User key={user.id}
-                           id={user.id}
-                           name={user.name}
-                           city={user.city}
-                           followed={user.followed}
-                           ava={user.ava}
-                           follow={props.follow}
-                           unfollow={props.unfollow}/>)
+    getUsers = () => {
+        if (this.props.users.length === 0) {
+            axios.get("https://social-network.samuraijs.com/api/1.0/users")
+                         .then(response => {
+                    this.props.setUsers(response.data.items)
+                                });
+        }
+    }
+    render() {
+        this.arr = this.props.users.map(user => <User
+            key={user.id}
+            id={user.id}
+            name={user.name}
+            city={user.city}
+            followed={user.followed}
+            ava={user.ava}
+            follow={this.props.follow}
+            unfollow={this.props.unfollow}/>);
 
-
-    return (
-        <div className={c.users_div}>
+        return (<div className={c.users_div}>
             <div className={c.users_list}>
                 <div className={c.content_name}>
                     Users
                 </div>
                 <div className={c.small_users_list}>
                     <div className={c.sub_small_users_list}>
-                        {arr}
+                        {this.arr}
                     </div>
-
                 </div>
-
-
             </div>
             <div className={c.users_filtr}>
-
             </div>
-
-        </div>
-    );
-
+        </div>);
+    }
 }
 
 export default Users;
+
