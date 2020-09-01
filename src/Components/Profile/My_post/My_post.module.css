@@ -15,6 +15,7 @@
 .Post_div {
     padding: 0;
     display: flex;
+    width: 540px;
     justify-content: flex-start;
     align-items: flex-start;
     flex-flow: column;
@@ -87,6 +88,7 @@
         margin: 0px;
         margin-top: 10px;
         margin-left: 15px;
+        width: 505px;
     }
     .post_avtor{
         display: flex;

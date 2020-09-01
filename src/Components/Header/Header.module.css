@@ -1,6 +1,7 @@
 .header {
     grid-area: h;
-    background: #ef8f64;
+   /* background: #ef8f64;*/
+    background: #f58f64;
     border-bottom: 3px solid #ffb18e;
     width: 100%;
     box-sizing: border-box;

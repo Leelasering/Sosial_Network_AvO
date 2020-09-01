@@ -1,6 +1,6 @@
 .dial_name_div{
     height: 60px;
-    width: 238px;
+        width: 238px;
     position: relative;
     cursor: pointer;
 }
@@ -47,7 +47,7 @@ position: relative;
     top: 35px;
     left: 60px;
     font-size: 12px;
-    color: #93997d;
+    color: #666;
     margin: 0;
     padding: 0;
     line-height: 13px;
@@ -68,7 +68,7 @@ position: relative;
     max-width: 32px;
 
     height: 18px;
-    background: #ffb18e;
+    background: #ffa17e;
     padding: 0 5.6px 0 5.6px;
     border-radius: 10px;
     color: #fff;
@@ -88,7 +88,7 @@ position: relative;
 }
 .active .dial_name_div{
     background: #87b27e;
-   
+
 }
 .active .dial_time{
     color: #fff;

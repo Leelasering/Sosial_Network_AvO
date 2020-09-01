@@ -9,6 +9,7 @@ div{
   justify-content: center;
   align-items: flex-start;
 background: #fffaf8;
+
 }
 .Sub_Con{
   width: 1026px;
@@ -74,8 +75,8 @@ html, body {
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -92,7 +93,8 @@ html, body {
     position: absolute;
     top: 0;
     left: 0;
-    background: #ef8f64;
+    /* background: #ef8f64;*/
+    background: #f58f64;
     border-bottom: 3px solid #ffb18e;
     width: 100vw;
     box-sizing: border-box;
@@ -109,7 +111,8 @@ html, body {
 }
 .content {
     grid-area: c;
-    background: #fcfff0;
+    /*background: #fcfff0;*/
+    background: #f6ffdf;
     border: 3px solid #dcee97;
     border-radius: 20px 0 0 0;
     position: relative;
