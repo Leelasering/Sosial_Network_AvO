@@ -1,87 +1,52 @@
 import React from 'react';
 import c from './Users.module.css';
 import User from "./User";
-import * as axios from "axios";
 
+const Users = (props) => {
 
-class Users extends React.Component {
+    let  pagesCount = Math.ceil(props.totalUsersCount/props.pageSize);
 
+    let pages = [];
 
-    getUsers = () => {
-        if (this.props.users.length === 0) {
-            axios.get("https://social-network.samuraijs.com/api/1.0/users")
-                         .then(response => {
-                    this.props.setUsers(response.data.items)
-                                });
-        }
-    }
-    onPageChanged = (pageNumber) =>{
-        this.props.setCurrentPage(pageNumber);
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`)
-            .then(response => {
-                this.props.setUsers(response.data.items)
-            });
-    }
+    if(props.currentPage > 3){pages.push(1)};
+    if(props.currentPage > 2){pages.push(props.currentPage-2)};
+    if(props.currentPage > 1){pages.push(props.currentPage-1)};
+    pages.push(props.currentPage);
+    if(props.currentPage < pagesCount){pages.push(props.currentPage+1)};
+    if(props.currentPage < pagesCount-1){pages.push(props.currentPage+2)};
+    if(props.currentPage < pagesCount-2){pages.push(pagesCount)};
 
-    componentDidMount() {
-        if (this.props.users.length === 0) {
-            axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
-                .then(response => {
-                    this.props.setUsers(response.data.items)
-                    this.props.setTotalUsersCount(response.data.totalCount)
-                });
-        }
-    }
-    
+    let btns_arr = pages.map(p =>
+        <div className={props.currentPage === p ? c.selected_page : c.page_btn} onClick={(e)=>{props.onPageChanged(p)}}>{p}</div>
+    )
+    let users_arr = props.users.map(user => <User
+        key={user.id}
+        id={user.id}
+        name={user.name}
+        city={user.city}
+        followed={user.followed}
+        ava={user.ava}
+        follow={props.follow}
+        unfollow={props.unfollow}/>);
 
-    render() {
-
-        let  pagesCount = Math.ceil(this.props.totalUsersCount/this.props.pageSize);
-
-        let pages = [];
-
-        if(this.props.currentPage > 3){pages.push(1)};
-        if(this.props.currentPage > 2){pages.push(this.props.currentPage-2)};
-        if(this.props.currentPage > 1){pages.push(this.props.currentPage-1)};
-        pages.push(this.props.currentPage);
-        if(this.props.currentPage < pagesCount){pages.push(this.props.currentPage+1)};
-        if(this.props.currentPage < pagesCount-1){pages.push(this.props.currentPage+2)};
-        if(this.props.currentPage < pagesCount-2){pages.push(pagesCount)};
-
-
-        this.arr = this.props.users.map(user => <User
-            key={user.id}
-            id={user.id}
-            name={user.name}
-            city={user.city}
-            followed={user.followed}
-            ava={user.ava}
-            follow={this.props.follow}
-            unfollow={this.props.unfollow}/>);
-
-        this.btns_arr = pages.map(p =>
-            <div className={this.props.currentPage === p ? c.selected_page : c.page_btn} onClick={(e)=>{this.onPageChanged(p)}}>{p}</div>
-        )
-
-        return (<div className={c.users_div}>
-            <div className={c.users_list}>
-                <div className={c.content_name}>
-                    Users
-                </div>
-                <div className={c.small_users_list}>
-                    <div className={c.sub_small_users_list}>
-                        {this.arr}
-                    </div>
-                </div>
-                <div className={c.pages_btn_div}>
-                    {this.btns_arr}
+    return (<div className={c.users_div}>
+        <div className={c.users_list}>
+            <div className={c.content_name}>
+                Users
+            </div>
+            <div className={c.small_users_list}>
+                <div className={c.sub_small_users_list}>
+                    {users_arr}
                 </div>
             </div>
-            <div className={c.users_filtr}>
+            <div className={c.pages_btn_div}>
+                {btns_arr}
             </div>
-        </div>);
-    }
+        </div>
+        <div className={c.users_filtr}>
+        </div>
+    </div>);
+
 }
 
 export default Users;
-
