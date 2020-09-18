@@ -4,10 +4,11 @@ import {NavLink} from "react-router-dom";
 import SiteBar from "./SiteBar/SiteBar";
 
 const NavBar = (props) => {
+
     return (
         <nav className={c.nav}>
             <div className={c.nav_div}>
-                <NavLink to="/Profile" activeClassName={c.active}>
+                <NavLink to="/Profile"  activeClassName={c.active}>
                     <div>Profile</div>
                 </NavLink>
                 <NavLink to="/Dialogs" activeClassName={c.active}>

@@ -12,11 +12,9 @@ const Profile = (props) => {
     return (
 
             <div className={c.Ava_Desc}>
-
-                <Ava />
-
+                <Ava ava={props.profile}/>
                 <div>
-                <Desc />
+                <Desc profile={props.profile}/>
                 <MyPostContainer/>
                 </div>
 

@@ -1,7 +1,7 @@
 .header {
     grid-area: h;
-   /* background: #ef8f64;*/
-    background: #f58f64;
+    background: #ef8f64;
+   /* background: #f58f64;*/
     border-bottom: 3px solid #ffb18e;
     width: 100%;
     box-sizing: border-box;
@@ -9,6 +9,7 @@
     flex-flow: row;
     align-items:center;
     justify-content:flex-start;
+    position: relative;
 }
 
 .logo_img {
@@ -48,4 +49,22 @@
         -1px 1px 0 #67825E,
         1px 1px 0 #67825E;
 
+}
+.loginblock{
+position: absolute;
+    right: 3px;
+    height: 100%;
+    width: 120px;
+    background-color: #ffb18e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.login_link{
+    height: 30px;
+    width: 100px;
+    text-align: center;
+    line-height: 30px;
+    color: #fff;
+    font-size: 16px;
 }

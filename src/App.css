@@ -8,7 +8,7 @@ div{
   display: flex;
   justify-content: center;
   align-items: flex-start;
-background: #fffaf8;
+background: #f7f2f0;
 
 }
 .Sub_Con{
@@ -37,6 +37,10 @@ html, body {
     scrollbar-width: thin;
     overflow-x: hidden;
     scrollbar-color: #c4cf9c #f7f8f3;
+}
+a {
+    text-decoration: none;
+    color: #67825e;
 }
 ::-webkit-scrollbar {
     width: 6px; /* ������ ��� ������������� ������� */
@@ -93,8 +97,8 @@ html, body {
     position: absolute;
     top: 0;
     left: 0;
-    /* background: #ef8f64;*/
-    background: #f58f64;
+     background: #ef8f64;
+   /* background: #f58f64;*/
     border-bottom: 3px solid #ffb18e;
     width: 100vw;
     box-sizing: border-box;
@@ -111,8 +115,9 @@ html, body {
 }
 .content {
     grid-area: c;
-    /*background: #fcfff0;*/
-    background: #f6ffdf;
+    background: #f5f8ec;
+   /* background: #f6ffdf;*/
+    /* background: #fcfff0;*/
     border: 3px solid #dcee97;
     border-radius: 20px 0 0 0;
     position: relative;

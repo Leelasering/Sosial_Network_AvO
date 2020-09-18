@@ -25,9 +25,11 @@ const Users = (props) => {
         name={user.name}
         city={user.city}
         followed={user.followed}
-        ava={user.ava}
+        ava={user.photos.large}
         follow={props.follow}
-        unfollow={props.unfollow}/>);
+        unfollow={props.unfollow}
+        followingInProgress={props.followingInProgress}
+        toggleIsFollowingProgress={props.toggleIsFollowingProgress}/>);
 
     return (<div className={c.users_div}>
         <div className={c.users_list}>
