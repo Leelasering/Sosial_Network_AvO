@@ -5,20 +5,12 @@ import Header from "./Header";
 import {setAuthUserData} from "../../Redux/Auth_reduser";
 import {setUserProfile} from "../../Redux/Profile_reducer";
 import {userAPI} from "../../API/api";
+import {getAuthMeThunkCreator} from "../../Redux/Auth_reduser";
 
 
 class HeaderContainer extends React.Component {
     componentDidMount() {
-        userAPI.getAuthMe().then(data => {
-            if (data.resultCode == 0) {
-                let {id, email, login} = data.data
-                this.props.setAuthUserData(id, email, login)
-                userAPI.getProfile(id).then(data => {
-                    //   this.props.toggleIsFetching(false);
-                    this.props.setUserProfile(data);
-                });
-            }
-        });
+        this.props.getAuthMeThunkCreator();
     }
 
     render() {
@@ -40,5 +32,6 @@ let mapDispatchToProps = (state) => ({})
 
 export default connect(mapStateToProps, {
     setAuthUserData,
-    setUserProfile
+    setUserProfile,
+    getAuthMeThunkCreator
 })(HeaderContainer);

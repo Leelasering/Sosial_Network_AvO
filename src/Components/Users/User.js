@@ -22,26 +22,37 @@ const User = (props) => {
 
             {props.followed ?
                 <button disabled={props.followingInProgress.some(id =>id == props.id)} onClick={() => {
-                    props.toggleIsFollowingProgress(true,props.id);
+
+                    props.UnfollowThunkCreator(props.id);
+                   /* props.toggleIsFollowingProgress(true,props.id);
                     userAPI.unfollow(props.id).then(data => {
                             if (data.resultCode == 0)
                             {
                                 props.unfollow(props.id)
                             }
                         props.toggleIsFollowingProgress(false,props.id);
-                        });
+                        });*/
+
+
+
                 }} className={c.user_fr}>Unollow</button>:
 
 
                 <button disabled={props.followingInProgress.some(id =>id == props.id)} onClick={() => {
-                    props.toggleIsFollowingProgress(true,props.id);
+                    props.FollowThunkCreator(props.id);
+
+
+                    /*props.toggleIsFollowingProgress(true,props.id);
                     userAPI.follow(props.id).then(data => {
                             if (data.resultCode == 0)
                             {
                                 props.follow(props.id)
                             }
                         props.toggleIsFollowingProgress(false,props.id);
-                        });
+                        });*/
+
+
+
                 }} className={c.user_fr_foll}>Follow</button>}
 
         </div>

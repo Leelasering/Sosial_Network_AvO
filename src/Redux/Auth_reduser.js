@@ -1,3 +1,6 @@
+import {userAPI} from "../API/api";
+import {setUserProfile} from "./Profile_reducer";
+
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
 const SET_USER_DATA = 'SET_USER_DATA';
@@ -37,4 +40,21 @@ const authReducer = (state = initialState, action) =>
 }
 
 export const setAuthUserData = (userId,email,login) => ({type: SET_USER_DATA, data : {userId,email,login}})
+
+export const getAuthMeThunkCreator = () => {
+    return (dispatch) => {
+
+        userAPI.getAuthMe().then(data => {
+            if (data.resultCode == 0) {
+                let {id, email, login} = data.data
+                dispatch(setAuthUserData(id, email, login))
+                userAPI.getProfile(id).then(data => {
+                    //   this.props.toggleIsFetching(false);
+                    dispatch(setUserProfile(data));
+                });
+            }
+        });
+    }
+}
+
 export default authReducer;

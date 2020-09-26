@@ -3,20 +3,16 @@ import React from 'react';
 import Profile from "./Profile";
 import {connect} from "react-redux";
 import {setUserProfile} from "../../Redux/Profile_reducer";
-import {withRouter} from "react-router-dom";
-import {userAPI} from "../../API/api";
+import {Redirect, withRouter} from "react-router-dom";
+import {getProfileThunkCreator} from "../../Redux/Profile_reducer";
+import {AuthRedirect} from "../../hoc/WithAuthRedirect";
+import {compose} from "redux";
 
 
 class ProfileContainer extends React.Component {
     componentDidMount() {
-        let userId = this.props.match.params.userId;
-        if (!userId) {
-            userId = this.props.id;
-        }
-        userAPI.getProfile(userId).then(data => {
 
-            this.props.setUserProfile(data);
-        });
+        this.props.getProfileThunkCreator(this.props.match.params.userId, this.props.id);
     }
 
     render() {
@@ -31,8 +27,10 @@ let mapStateToProps = (state) => ({
     profile: state.ProfilePage.profile,
     id: state.Auth.userId,
 })
-let mapDispatchToProps = (state) => ({})
 
-let withUrlDataContainerComponent = withRouter(ProfileContainer);
 
-export default connect(mapStateToProps, {setUserProfile})(withUrlDataContainerComponent);
+export default compose(
+    connect(mapStateToProps, {setUserProfile, getProfileThunkCreator}),
+    withRouter,
+    AuthRedirect,
+)(ProfileContainer);

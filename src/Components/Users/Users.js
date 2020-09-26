@@ -29,13 +29,13 @@ const Users = (props) => {
         follow={props.follow}
         unfollow={props.unfollow}
         followingInProgress={props.followingInProgress}
-        toggleIsFollowingProgress={props.toggleIsFollowingProgress}/>);
+        toggleIsFollowingProgress={props.toggleIsFollowingProgress}
+        FollowThunkCreator={props.FollowThunkCreator}
+        UnfollowThunkCreator={props.UnfollowThunkCreator}/>);
 
     return (<div className={c.users_div}>
         <div className={c.users_list}>
-            <div className={c.content_name}>
-                Users
-            </div>
+
             <div className={c.small_users_list}>
                 <div className={c.sub_small_users_list}>
                     {users_arr}
@@ -46,6 +46,9 @@ const Users = (props) => {
             </div>
         </div>
         <div className={c.users_filtr}>
+            <div className={c.content_name}>
+                Users
+            </div>
         </div>
     </div>);
 

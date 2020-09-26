@@ -1,39 +1,21 @@
 import React from 'react';
 import Users from "./Users";
 import Preloader from "../General/PreLoader/Preloader";
-import {getUsers, userAPI as usersAPI} from "../../API/api";
+import {AuthRedirect} from "../../hoc/WithAuthRedirect";
+
 
 class UsersAPIcomponent extends React.Component {
 
-
-    getUsers = () => {
-        if (this.props.users.length === 0) {
-            usersAPI.getUsers().then(data => {
-                this.props.setUsers(data.items)
-            });
-        }
-    }
     onPageChanged = (pageNumber) => {
         this.props.setCurrentPage(pageNumber);
-        this.props.toggleIsFetching(true);
 
-        usersAPI.getUsers(pageNumber, this.props.pageSize).then(data => {
-            this.props.toggleIsFetching(false);
-            this.props.setUsers(data.items);
-        });
+        this.props.getUsersThunkCreator(pageNumber,this.props.pageSize,this.props.users.length = 0);
+
     }
 
     componentDidMount() {
-        if (this.props.users.length === 0) {
-            this.props.toggleIsFetching(true);
 
-            usersAPI.getUsers(this.props.currentPage, this.props.pageSize).then(data => {
-                this.props.toggleIsFetching(false);
-                this.props.setUsers(data.items);
-                this.props.setTotalUsersCount(data.totalCount);
-
-            });
-        }
+        this.props.getUsersThunkCreator(this.props.currentPage,this.props.pageSize,this.props.users.length);
     }
 
 
@@ -49,10 +31,13 @@ class UsersAPIcomponent extends React.Component {
                    unfollow={this.props.unfollow}
                    followingInProgress={this.props.followingInProgress}
                    toggleIsFollowingProgress={this.props.toggleIsFollowingProgress}
+                   FollowThunkCreator={this.props.FollowThunkCreator}
+                   UnfollowThunkCreator={this.props.UnfollowThunkCreator}
             />
         </>
     }
 }
 
-export default UsersAPIcomponent;
+
+export default AuthRedirect(UsersAPIcomponent);
 

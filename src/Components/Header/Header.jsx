@@ -17,7 +17,7 @@ const Header = (props) => {
                             <div className={c.login_link}>{props.login}</div>
 
                         :
-                        <NavLink to={'/login'}>
+                        <NavLink to={'/Login'}>
                             <div className={c.login_link}>Login</div>
                         </NavLink>
                 }
