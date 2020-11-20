@@ -1,7 +1,7 @@
 .header {
     grid-area: h;
-    background: #ef8f64;
-   /* background: #f58f64;*/
+    /*background: #ef8f64;*/
+    background: #f58f64;
     border-bottom: 3px solid #ffb18e;
     width: 100%;
     box-sizing: border-box;
@@ -54,17 +54,48 @@
 position: absolute;
     right: 3px;
     height: 100%;
-    width: 120px;
+    min-width: 120px;
     background-color: #ffb18e;
     display: flex;
+    flex-flow: row;
     justify-content: center;
     align-items: center;
+    padding-left: 10px;
+    padding-right: 5px;
+
+}
+.name_exit_img_div{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-flow: row;
 }
 .login_link{
     height: 30px;
-    width: 100px;
+
     text-align: center;
     line-height: 30px;
     color: #fff;
     font-size: 16px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.exit_img{
+    height: 30px;
+    width: 25px;
+
+    line-height: 20px;
+    padding-right: 5px;
+    padding-top: 9px;
+    padding-left: 5px;
+    margin-right: 5px;
+    background: inherit;
+    border: none;
+}
+.exit_img:hover{
+    background: #ff6f34;
+}
+.exit_img img{
+    height: 15px;
+    width: 15px;
 }

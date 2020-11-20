@@ -1,5 +1,6 @@
-import {userAPI} from "../API/api";
+import {authAPI,profileAPI} from "../API/api";
 import {setUserProfile} from "./Profile_reducer";
+import {stopSubmit} from "redux-form";
 
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
@@ -10,6 +11,7 @@ let initialState = {
         email: null,
         login: null,
         isAuth: false
+
 }
 // [{id: '13', name: 'Andrey Mohortov', city: 'Kharkiv',followed: true, ava:'/static/media/tree.c6f60dad.png',status: ''},
 //     {id: '14', name: 'Igor Chebotar', city: 'Moscow',followed: false, ava:'/static/media/tree.c6f60dad.png',status: ''},
@@ -24,8 +26,8 @@ const authReducer = (state = initialState, action) =>
         case SET_USER_DATA: {
             return {
                 ...state,
-                ...action.data,
-                isAuth: true,
+                ...action.payload,
+
                 }
         }
 
@@ -39,21 +41,54 @@ const authReducer = (state = initialState, action) =>
 
 }
 
-export const setAuthUserData = (userId,email,login) => ({type: SET_USER_DATA, data : {userId,email,login}})
+export const setAuthUserData = (userId,email,login, isAuth) => ({type: SET_USER_DATA, payload : {userId,email,login,isAuth}})
 
-export const getAuthMeThunkCreator = () => {
-    return (dispatch) => {
+export const getAuthMeThunkCreator = () => (dispatch) => {
 
-        userAPI.getAuthMe().then(data => {
+       return authAPI.getAuthMe()
+            .then(data => {
             if (data.resultCode == 0) {
                 let {id, email, login} = data.data
-                dispatch(setAuthUserData(id, email, login))
-                userAPI.getProfile(id).then(data => {
+
+                dispatch(setAuthUserData(id, email, login, true))
+                profileAPI.getProfile(id).then(data => {
                     //   this.props.toggleIsFetching(false);
+
                     dispatch(setUserProfile(data));
+
                 });
             }
         });
+
+    return "sddsg";
+}
+export const loginThunkCreator = (email, password , rememberMe) => {
+    return (dispatch) => {
+
+        authAPI.login(email, password , rememberMe)
+            .then(data => {
+                console.log('sdf');
+            if (data.data.resultCode === 0) {
+
+                dispatch(getAuthMeThunkCreator());
+            }
+            else
+            {
+                let err_mess = data.data.messages.length > 0 ? data.data.messages : "Some error!!!"
+                 dispatch(stopSubmit('login', {_error:err_mess}));
+            }
+        });
+    }
+}
+export const logoutThunkCreator = () => {
+    return (dispatch) => {
+
+        authAPI.logout()
+            .then(data => {
+                if (data.data.resultCode == 0) {
+                    dispatch(setAuthUserData(null, null, null, false))
+                }
+            });
     }
 }
 

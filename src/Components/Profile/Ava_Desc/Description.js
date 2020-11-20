@@ -1,5 +1,7 @@
 import React from 'react';
 import c from './Description.module.css';
+import ProfileStatus from "./ProfileStatus/ProfileStatus";
+import ProfileStatusContainer from "./ProfileStatus/ProfileStatusContainer";
 
 
 const Desc = (props) => {
@@ -19,12 +21,12 @@ const Desc = (props) => {
         return (
             <div className={c.desc_div}>
 
+
                 <div className={c.name}>{props.profile ? props.profile.fullName : ""}
-                    { props.profile.aboutMe ? <p className={c.about_me}> { props.profile.aboutMe}</p> : ""}
+                <ProfileStatusContainer />
                 </div>
 
-
-                {props.profile.contacts.facebook ?
+                    {props.profile.contacts.facebook ?
                     <div className={c.desc_p_div}><p className={c.p_1}>facebook:</p> <p
                         className={c.p_2}>{props.profile.contacts.facebook}</p></div>
                     :
@@ -62,6 +64,11 @@ const Desc = (props) => {
                 {props.profile.contacts.mainLink ?
                     <div className={c.desc_p_div}><p className={c.p_1}>mainLink:</p> <p
                         className={c.p_2}>{props.profile.contacts.mainLink}</p></div>
+                    :
+                    ""}
+                {props.profile.aboutMe ?
+                    <div className={c.desc_p_div}><p className={c.p_1}>aboutMe:</p> <p
+                        className={c.p_2}>{props.profile.aboutMe}</p></div>
                     :
                     ""}
 

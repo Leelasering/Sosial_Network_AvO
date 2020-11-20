@@ -6,6 +6,7 @@ import NavBar from "./NavBar";
 
 let mapStateToProps = (state) => {
     return {
+        id: state.Auth.userId
 
     }
 }

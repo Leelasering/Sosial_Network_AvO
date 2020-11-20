@@ -1,5 +1,5 @@
 import React from 'react';
-import {sendMessActionCreator, updateNewMessTextActionCreator} from "../../../../Redux/Dialogs_reducer";
+import {sendMessActionCreator} from "../../../../Redux/Dialogs_reducer";
 import SendMess from "./SendMess";
 import {connect} from "react-redux";
 
@@ -32,19 +32,14 @@ import {connect} from "react-redux";
 //}
 
 let mapStateToProps = (state) => {
-    return {
-        MessText: state.DialogsPage.NewMessText
-    }
+
 }
 let mapDispatchToProps = (dispatch) => {
 
     return {
-        sendMess: () => {
-            dispatch(sendMessActionCreator());
+        sendMess: (mess_text) => {
+            dispatch(sendMessActionCreator(mess_text));
         },
-        updateNewMessText: (text) => {
-            dispatch(updateNewMessTextActionCreator(text));
-        }
     }
 }
 const SendMessContainer = connect(mapStateToProps,mapDispatchToProps)(SendMess);

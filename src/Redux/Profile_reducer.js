@@ -1,9 +1,11 @@
-import {userAPI as usersAPI, userAPI} from "../API/api";
+import {profileAPI} from "../API/api";
 import {setTotalUsersCount, setUsers, toggleIsFetching} from "./Users_reducer";
 
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 const ADD_POST = 'ADD-POST';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
+const GET_STATUS = 'GET_STATUS';
+const SET_STATUS = 'UPDATE_STATUS';
 
 let initialState = {
     posts: [
@@ -19,8 +21,8 @@ let initialState = {
         // {id: '9', name: 'Vladimir Alipov', text: 'Hfghhfghfgh', l_count: "12", date: '23.07.2020'}
 
     ],
-    NewPostText: '',
-    profile: null
+    profile: null,
+    status: ""
 }
 
 const ProfileReducer = (state = initialState, action) => {
@@ -34,34 +36,34 @@ const ProfileReducer = (state = initialState, action) => {
                 posts : [...state.posts],
             };
             
-            if(state.NewPostText.length != 0) {
+
                 let newPost = {
                     id: 505,
-                    text: state.NewPostText,
+                    text: action.post_text,
                     name: 'FirstName LastName',
                     l_count: 0,
                     date: '27.07.2020'
                 };
-
                 stateCopy.posts.push(newPost);
-                stateCopy.NewPostText = '';
-            }
+
+
             return stateCopy;
         }
 
-        case UPDATE_NEW_POST_TEXT: //________________________UPDATE_NEW_POST_TEXT
-        {
-            let stateCopy = {
-                ...state,
-            };
-            stateCopy.NewPostText = action.text;
-            return stateCopy;
-        }
+
         case SET_USER_PROFILE: //________________________UPDATE_NEW_POST_TEXT
         {
-
             return {...state, profile: action.profile};
         }
+        case GET_STATUS: //________________________UPDATE_NEW_POST_TEXT
+        {
+            return {...state, status: action.status};
+        }
+        case SET_STATUS: //________________________UPDATE_NEW_POST_TEXT
+        {
+            return {...state, status: action.status};
+        }
+
         default:
         {
             return  {
@@ -71,25 +73,52 @@ const ProfileReducer = (state = initialState, action) => {
         }
     }
 }
-export const addPostActionCreator = () => ({type: ADD_POST});
+export const setUserStatus = (status) => ({type: SET_STATUS,status});
+export const addPostActionCreator = (post_text) => ({type: ADD_POST,post_text});
 export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile});
 export const updateNewPostTextActionCreator = (text) =>({
     type: UPDATE_NEW_POST_TEXT,
     text: text});
 
-export const getProfileThunkCreator = (paramId,id) => {
+export const getProfileThunkCreator = (userId) => {
     return (dispatch) => {
 
-        let userId = paramId;
+
+       /* let userId = paramId;
         if (!userId) {
             userId = id;
-        }
-        userAPI.getProfile(userId).then(data => {
+        }*/
+
+        profileAPI.getProfile(userId).then(data => {
             dispatch(setUserProfile(data));
         });
     }
 }
+export const getStatusThunkCreator = (userId) => {
+    return (dispatch) => {
 
+        /*let userId = paramId;
+        if (!userId) {
+            userId = id;
+        }*/
 
+        profileAPI.getProfileStatus(userId).then(data => {
+            dispatch(setUserStatus(data));
+        });
+    }
+}
+export const updateStatusThunkCreator = (status) => {
+    return (dispatch) => {
+
+        profileAPI.updateProfileStatus(status)
+            .then(response => {
+
+            if(response.resultCode == 0)
+            {
+                dispatch(setUserStatus(status));
+            }
+        });
+    }
+}
 
 export default ProfileReducer;

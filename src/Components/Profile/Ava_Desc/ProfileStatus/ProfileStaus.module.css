@@ -1,0 +1,88 @@
+.about_me{
+    margin: 0;
+    margin-top: 5px;
+    font-size: 13px;
+    font-weight: 400;
+    color: #555;
+    min-height: 15px;
+    line-height: 15px;
+}
+.about_me_autmMe_empty_btn{
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    color: #bbb;
+
+    width: 500px;
+    height: 15px;
+    margin-bottom: -10px;
+    margin-left: 0px;
+    cursor: pointer;
+}
+.about_me_autmMe_NOTempty_btn{
+    margin: 0;
+    margin-top: 5px;
+    font-size: 13px;
+    font-weight: 400;
+    color: #555;
+    width: 500px;
+    background: #fff;
+    line-height: 15px;
+    min-height: 15px;
+
+    cursor: pointer;
+}
+.change_status_active_div{
+  width: 540px;
+    height: 50px;
+    background: #fff;
+    margin-left: -20px;
+    margin-bottom: -20px;
+    border-radius: 10px;
+    position: relative;
+    border: 5px solid #ffefe8;
+    background: #fff;
+
+}
+.set_status_text{
+    width: 505px;
+    height: 20px;
+    border: none;
+box-sizing: border-box;
+    border-left: 1px solid #ddd;
+    margin-left: 13px;
+    margin-top:10px;
+    font-size: 13px;
+    line-height: 20px;
+    padding: 0;
+    font-family: 'Mukta', sans-serif;
+    color: #555;
+    padding-left: 5px;
+}
+.set_status_text:active,.set_status_text:focus{
+    padding-left: 6px;
+    border-left: none ;
+    border-bottom: 2px solid #dcee97;
+    margin-top:11px;
+}
+.set_status_text::-webkit-input-placeholder
+{
+color: #ccc;
+}
+.set_status_btn{
+    position: absolute;
+    bottom: 10px;
+    left: 15px;
+    width: 120px;
+    height: 20px;
+    border: 1px solid #a1ce93;
+    color: #87b27e;
+    font-size: 13px;
+    border-radius: 15px;
+    text-align: center;
+    background-color: #fff;
+}
+.set_status_btn:hover{
+    box-shadow: 0 0 3px 2px #dcee97;
+    color: #e59877;
+}

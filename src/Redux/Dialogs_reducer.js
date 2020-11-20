@@ -28,7 +28,7 @@ let initialState = {
         {id: '9', name: 'Vladimir Alipov', text: 'Hfghhfghfgh', time: '10:23', mess: '8'},
         {id: '10', name: 'Sasha Volk', text: 'Hfgfghfhfgh', time: '11:04', mess: '24'},
     ],
-    NewMessText: ''
+
 }
 
 export const DialogsReducer = (state = initialState,action) =>
@@ -42,26 +42,21 @@ export const DialogsReducer = (state = initialState,action) =>
     switch(action.type){
         case SEND_MESS://____________________________________SEND_MESS
         {
-            if(state.NewMessText.length != 0)
-            {
+
                 let newMess = {
                     id: 505,
-                    text: state.NewMessText,
+                    text: action.mess_text,
                     name: 'FirstName LastName',
                     time: '19:30',
                     date: '27.07.2020'
                 };
 
                 stateCopy.messages.push(newMess);
-                stateCopy.NewMessText = '';
-            }
+
+
             return stateCopy;
         }
-        case UPDATE_NEW_MESS_TEXT://_________________________UPDATE_NEW_MESS_TEXT
-        {
-            stateCopy.NewMessText = action.text;
-            return stateCopy;
-        }
+
         default:
         {
             return stateCopy;
@@ -70,7 +65,7 @@ export const DialogsReducer = (state = initialState,action) =>
 
 }
 
-export const sendMessActionCreator = () => ({type: SEND_MESS});
+export const sendMessActionCreator = (mess_text) => ({type: SEND_MESS, mess_text});
 export const updateNewMessTextActionCreator = (text) => ({
     type: UPDATE_NEW_MESS_TEXT,
     text: text});

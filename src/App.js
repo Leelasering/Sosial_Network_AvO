@@ -13,13 +13,29 @@ import HeaderContainer from "./Components/Header/HeaderContainer";
 import NavBarContainer from "./Components/NavBar/NavBarContainer";
 import Login from "./Components/Login/Login";
 import DialogsContainer from "./Components/Dialogs/DialogsContainer";
+import {connect} from "react-redux";
+import {getAuthMeThunkCreator, setAuthUserData} from "./Redux/Auth_reduser";
+import {setUserProfile} from "./Redux/Profile_reducer";
+import {initializeApp} from "./Redux/App_reduser";
+import Preloader from "./Components/General/PreLoader/Preloader";
 
 
+class App extends React.Component {
+    componentDidMount() {
+        
+          this.props.initializeApp();
+    }
 
-const App = (props) => {
 
+    render() {
+        if(!this.props.initialized)
+        {
+          return <Preloader/>
+        }
 
-    return (
+        else {
+
+        return (
 
             <div className="App">
                 <div className="Sub_Con">
@@ -41,8 +57,16 @@ const App = (props) => {
                 </div>
             </div>
 
-    );
+        );
+         }
+    }
 }
+let mapStateToProps = (state) => ({
+    initialized: state.App.initialized
 
 
-export default App;
+
+})
+ export default connect(mapStateToProps, {initializeApp})(App);
+
+
